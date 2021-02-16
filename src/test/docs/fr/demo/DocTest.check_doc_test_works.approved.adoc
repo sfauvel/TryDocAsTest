@@ -1,0 +1,4 @@
+[#fr_demo_DocTest_check_doc_test_works]
+= Check doc test works
+
+Le carré de 5 est 25
