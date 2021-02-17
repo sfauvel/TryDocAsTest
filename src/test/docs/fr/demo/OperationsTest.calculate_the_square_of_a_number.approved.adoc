@@ -1,0 +1,6 @@
+[#fr_demo_OperationsTest_calculate_the_square_of_a_number]
+= Calculate the square of a number
+
+In mathematics, a square is the result of multiplying a number by itself.
+
+Square of 5 equals 25

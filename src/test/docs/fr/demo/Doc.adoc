@@ -1,9 +1,0 @@
-:toc: left
-:nofooter:
-:stem:
-
-= Documentation
-
-== Doc test
-
-include::DocTest.check_doc_test_works.approved.adoc[leveloffset=+2]

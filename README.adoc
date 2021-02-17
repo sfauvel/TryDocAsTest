@@ -1,0 +1,27 @@
+= Starting project
+
+This project is a simple starting point to experiment testing using a living documentation.
+
+== Prerequisite
+
+You need to get .jar.
+
+The simplest way is to download `.jar` and `.pom` from last package at `https://github.com/sfauvel/documentationtesting`.
+
+Run the maven command to install it locally:
+
+----
+mvn install:install-file -Dfile=<path-to-file>.jar -DpomFile=<path-to-pomfile>.pom
+----
+
+Then, you can edit `pom.xml` to edit `documentationtesting.version` properties if it's necessary.
+
+== Quick start
+
+Execute tests using `mvn test` or with yout IDE.
+
+Each test is associated to a file in `src/test/docs` with a name that ends in `approved`.
+If test output is different from `approved` file, a `received` file is created and test fails.
+
+To create an asciidoc file that aggregate all test files generated, execute `DocGenerator.main`.
+This file is converted to html and put in `docs` folder.
