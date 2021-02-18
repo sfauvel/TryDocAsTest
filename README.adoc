@@ -1,27 +1,66 @@
 = Starting project
 
-This project is a simple starting point to experiment testing using a living documentation.
+This project provides the necessary to experiment tests based on living documentation.
+
+You can find some description of the concept here: https://sfauvel.github.io/documentationtesting/
 
 == Prerequisite
 
-You need to get .jar.
+We use the library link:https://github.com/sfauvel/documentationtesting[documentationtesting]
+which provides what we need to get started.
 
-The simplest way is to download `.jar` and `.pom` from last package at `https://github.com/sfauvel/documentationtesting`.
+The library is not yet on a public repository.
+To use it, you need to download and install it.
 
-Run the maven command to install it locally:
+You can download `.jar` and `.pom` from here:
+link:https://github.com/sfauvel/documentationtesting/packages/538792?version=1.0[Documentation Testing 1.0]
 
+Run this maven command to install it:
 ----
 mvn install:install-file -Dfile=<path-to-file>.jar -DpomFile=<path-to-pomfile>.pom
 ----
 
-Then, you can edit `pom.xml` to edit `documentationtesting.version` properties if it's necessary.
+
+[NOTE.speaker]
+--
+If needed, you may change library version editing properties in `pom.xml`.
+----
+<documentationtesting.version>1.0</documentationtesting.version>
+----
+
+--
 
 == Quick start
 
-Execute tests using `mvn test` or with yout IDE.
+To execute all run
+----
+mvn package
+----
 
-Each test is associated to a file in `src/test/docs` with a name that ends in `approved`.
-If test output is different from `approved` file, a `received` file is created and test fails.
+If all goes well, tests are executed and documentation is generated in `docs` folder.
 
-To create an asciidoc file that aggregate all test files generated, execute `DocGenerator.main`.
-This file is converted to html and put in `docs` folder.
+== How to
+
+=== Running test
+
+You can run tests with `mvn test` or with your IDE.
+
+We use the Golden Master technique.
+Each test generates a file and compare the result to a reference file in `src/test/docs`.
+If the content is the same, test pass, otherwise, test fails and the result file is saved in the same directory so we can compare it with reference file.
+
+The reference file name ends with `.approved.adoc`.
+It's name is built from class name and method name.
+It's written in `link:https://asciidoctor.org/docs/what-is-asciidoc/[asciidoc]` format.
+
+The file generated when test fails has the same name except that it ended with `.received.adoc`.
+If `received` file is correct, you just have to rename it with `approved` to make it the new reference.
+
+=== Generate documentation
+
+There is one file created by file.
+To group them into a single file, you can execute `main` in `DocGenerator` class.
+It creates in `src/test/docs` an asciidoc file that includes all reference files.
+This file is converted to an HTML file in ̀`docs` folder.
+
+When you execute `mvn package`, this main program is launch after running tests.
