@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class ConvertToHtml {
                                 .safe(SafeMode.UNSAFE)
                                 .toDir(outputPath.toFile()));
 
-                System.out.println("\t" + outputPath.resolve(asciidocFile.getName().replace(".adoc", ".html")) + " was generated");
+                System.out.println("\t" + Paths.get(".").resolve(outputPath.resolve(asciidocFile.getName().replace(".adoc", ".html"))) + " was generated");
             }
         } catch (Exception e) {
             throw new RuntimeException(e);

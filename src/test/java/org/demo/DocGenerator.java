@@ -20,7 +20,7 @@ public class DocGenerator extends MainDocumentation {
         generate("", DOC_FILENAME);
 
         final Path docFilename = getDocRootPath().resolve(DOC_FILENAME + ".adoc");
-        System.out.println("\t" + docFilename + " was generated");
+        System.out.println("\t" + Paths.get(".").resolve(Paths.get("").toAbsolutePath().relativize(docFilename)) + " was generated");
         convertToHtml.execute(docFilename.toFile());
     }
 
