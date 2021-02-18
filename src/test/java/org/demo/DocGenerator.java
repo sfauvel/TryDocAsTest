@@ -16,9 +16,12 @@ public class DocGenerator extends MainDocumentation {
     private ConvertToHtml convertToHtml = new ConvertToHtml(getDocRootPath(), HTML_DOCS_PATH);
 
     public void execute() throws IOException {
+        System.out.println("Generate root documentation");
         generate("", DOC_FILENAME);
 
-        convertToHtml.execute(getDocRootPath().resolve(DOC_FILENAME + ".adoc").toFile());
+        final Path docFilename = getDocRootPath().resolve(DOC_FILENAME + ".adoc");
+        System.out.println("\t" + docFilename + " was generated");
+        convertToHtml.execute(docFilename.toFile());
     }
 
     public static void main(String... args) throws IOException {

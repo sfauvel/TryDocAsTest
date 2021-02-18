@@ -34,6 +34,7 @@ public class ConvertToHtml {
     }
 
     public void execute(List<File> files) {
+        System.out.println("Convert to html");
         try (Asciidoctor asciidoctor = create()) {
             for (File asciidocFile : files) {
                 final Path outputPath = getOutputPath(asciidocFile);
@@ -42,6 +43,8 @@ public class ConvertToHtml {
                         OptionsBuilder.options()
                                 .safe(SafeMode.UNSAFE)
                                 .toDir(outputPath.toFile()));
+
+                System.out.println("\t" + outputPath.resolve(asciidocFile.getName().replace(".adoc", ".html")) + " was generated");
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
