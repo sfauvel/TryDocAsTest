@@ -8,6 +8,7 @@ You can find some description of the concept here: https://sfauvel.github.io/doc
 
 We use the library link:https://github.com/sfauvel/documentationtesting[documentationtesting]
 which provides what we need to get started.
+For a complete description of how to use it go to the link:https://sfauvel.github.io/documentationtesting/documentationtesting[documentation site]
 
 The library is not yet on a public repository.
 To use it, you need to download and install it.
@@ -64,3 +65,48 @@ It creates in `src/test/docs` an asciidoc file that includes all reference files
 This file is converted to an HTML file in ̀`docs` folder.
 
 When you execute `mvn package`, this main program is launch after running tests.
+
+=== Create a new test
+
+To add a test, you just have to create a test as usual.
+
+You need to add those line in your class.
+[source, java]
+----
+DocWriter doc = new DocWriter();
+@RegisterExtension
+ApprovalsExtension extension = new ApprovalsExtension(doc);
+----
+
+`DocWriter` is the class used to record everything you want to write in your final document using `write` method.
+
+An `ApprovalsExtension` have to be regsitered.
+At the end of each test method, it checks if content written during test is identically to the reference file.
+
+The first time you run a test, it fails bescause there is no reference file.
+You have to adapt the `received` file to make it correspond to what you want and then,
+rename it with `approved` instead of `received`.
+
+
+Test name or @DisplayName content is used as chapter title in documentation.
+
+The method Javadoc is written just under title in documentation.
+
+=== Writing a test
+
+Tests are a bit different from what we are used to.
+There is no explicit assertion.
+The verification is automatically done by the extension at the end of the test (@AfterEach).
+
+*You should see a test method as a chapter writer more than a test*.
+You are free to write anything you want to appear in your documentation.
+
+There should be at least enough information to be able to take a decision on the behavior
+and say whether or not it is compliant.
+
+That means:
+
+- Initial values
+- Actions
+- Result
+
