@@ -1,4 +1,4 @@
-package fr.demo;
+package org.demo;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;

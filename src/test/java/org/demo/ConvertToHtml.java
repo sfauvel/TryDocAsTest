@@ -1,4 +1,4 @@
-package fr.demo;
+package org.demo;
 
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.OptionsBuilder;

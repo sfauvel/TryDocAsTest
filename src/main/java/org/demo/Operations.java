@@ -1,4 +1,4 @@
-package fr.demo;
+package org.demo;
 
 public class Operations {
 

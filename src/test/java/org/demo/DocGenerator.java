@@ -1,4 +1,4 @@
-package fr.demo;
+package org.demo;
 
 import org.sfvl.doctesting.MainDocumentation;
 
