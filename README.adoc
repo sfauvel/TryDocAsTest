@@ -13,8 +13,8 @@ For a complete description of how to use it go to the link:https://sfauvel.githu
 The library is not yet on a public repository.
 To use it, you need to download and install it.
 
-You can download `.jar` and `.pom` from here:
-link:https://github.com/sfauvel/documentationtesting/packages/538792?version=1.0[Documentation Testing 1.0]
+You can download `.jar` and `.pom` from
+link:https://github.com/sfauvel/documentationtesting/packages/538792[last Documentation Testing release]
 
 Run this maven command to install it:
 ----
