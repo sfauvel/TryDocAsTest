@@ -1,0 +1,4 @@
+:nofooter:
+= Operations test
+
+include::OperationsTest.calculate_the_square_of_a_number.approved.adoc[leveloffset=+1]

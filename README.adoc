@@ -26,7 +26,7 @@ mvn install:install-file -Dfile=<path-to-file>.jar -DpomFile=<path-to-pomfile>.p
 --
 If needed, you may change library version editing properties in `pom.xml`.
 ----
-<documentationtesting.version>1.0</documentationtesting.version>
+<documentationtesting.version>1.1.1</documentationtesting.version>
 ----
 
 --

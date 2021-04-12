@@ -1,9 +1,13 @@
 :toc: left
 :nofooter:
 :stem:
+:source-highlighter: rouge
+
+
+
 
 = Documentation
 
-== Operations test
 
-include::org/demo/OperationsTest.calculate_the_square_of_a_number.approved.adoc[leveloffset=+2]
+
+include::org/demo/OperationsTest.adoc[leveloffset=+1]

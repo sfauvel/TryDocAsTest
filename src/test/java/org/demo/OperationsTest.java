@@ -2,14 +2,14 @@ package org.demo;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import org.sfvl.doctesting.DocWriter;
 import org.sfvl.doctesting.junitextension.ApprovalsExtension;
+import org.sfvl.doctesting.utils.DocWriter;
 
 public class OperationsTest {
 
-    DocWriter doc = new DocWriter();
+    static DocWriter doc = new DocWriter();
     @RegisterExtension
-    ApprovalsExtension extension = new ApprovalsExtension(doc);
+    static ApprovalsExtension extension = new ApprovalsExtension(doc);
 
     /**
      * In mathematics, a square is the result of multiplying a number by itself.
