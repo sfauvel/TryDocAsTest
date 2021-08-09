@@ -10,4 +10,4 @@
 
 
 
-include::org/demo/OperationsTest.adoc[leveloffset=+1]
+include::org/demo/_OperationsTest.approved.adoc[leveloffset=+1]

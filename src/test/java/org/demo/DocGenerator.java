@@ -3,7 +3,6 @@ package org.demo;
 import org.sfvl.docformatter.AsciidocFormatter;
 import org.sfvl.docformatter.Formatter;
 import org.sfvl.doctesting.utils.ClassFinder;
-import org.sfvl.doctesting.utils.DocumentationNamer;
 import org.sfvl.doctesting.writer.Classes;
 import org.sfvl.doctesting.writer.Document;
 import org.sfvl.doctesting.writer.Options;
