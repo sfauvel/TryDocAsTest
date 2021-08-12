@@ -65,7 +65,8 @@
             <groupId>org.sfvl</groupId>
             <artifactId>documentationtesting</artifactId>
             <version>${documentationtesting.version}</version>
-            <scope>test</scope>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/documentationtesting-${documentationtesting.version}.jar</systemPath>
         </dependency>
 
         <dependency>
