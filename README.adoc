@@ -2,43 +2,23 @@
 
 This project provides the necessary to experiment tests based on living documentation.
 
-You can find some description of the concept here: https://sfauvel.github.io/documentationtesting/
+You can find some description of the concept in the https://sfauvel.github.io/documentationtesting/[DocumentationTesting site].
 
-== Prerequisite
+In this project, we use the https://sfauvel.github.io/documentationtesting/documentationtesting/[DocumentationTesting java library]
+provides what we need to get started.
 
-We use the library link:https://github.com/sfauvel/documentationtesting[documentationtesting]
-which provides what we need to get started.
-For a complete description of how to use it go to the link:https://sfauvel.github.io/documentationtesting/documentationtesting[documentation site]
-
-The library is not yet on a public repository.
-To use it, you need to download and install it.
-
-You can download `.jar` and `.pom` from
-link:https://github.com/sfauvel/documentationtesting/packages/538792[last Documentation Testing release]
-
-Run this maven command to install it:
-----
-mvn install:install-file -Dfile=<path-to-file>.jar -DpomFile=<path-to-pomfile>.pom
-----
-
-
-[NOTE.speaker]
---
-If needed, you may change library version editing properties in `pom.xml`.
-----
-<documentationtesting.version>1.1.1</documentationtesting.version>
-----
-
---
+The library is not yet on a public repository but it's embedded in the project
+so you don't have to worry with installation.
+Nevertheless, you can download the link:https://github.com/sfauvel/documentationtesting/packages/538792[last Documentation Testing version] if needed.
 
 == Quick start
 
-To execute all run
+After cloning the project, execute `prepare-package` goal to run all tests.
 ----
-mvn package
+mvn prepare-package
 ----
 
-If all goes well, tests are executed and documentation is generated in `docs` folder.
+If all goes well, tests are executed and documentation was generated in `docs` folder.
 
 == How to
 
@@ -46,25 +26,31 @@ If all goes well, tests are executed and documentation is generated in `docs` fo
 
 You can run tests with `mvn test` or with your IDE.
 
-We use the Golden Master technique.
-Each test generates a file and compare the result to a reference file in `src/test/docs`.
-If the content is the same, test pass, otherwise, test fails and the result file is saved in the same directory so we can compare it with reference file.
+We use the https://en.wikipedia.org/wiki/Characterization_test[Golden Master] technique using https://approvaltests.com/[Approvals].
+Each test generates a file and compare the result to a reference file located in `src/test/docs`.
+if the contents of the files are the same, test will pass, otherwise, test fails.
+In that case, the generated file is saved in the same directory so we can compare it with the reference file to identify the difference.
 
 The reference file name ends with `.approved.adoc`.
 It's name is built from class name and method name.
 It's written in `link:https://asciidoctor.org/docs/what-is-asciidoc/[asciidoc]` format.
 
 The file generated when test fails has the same name except that it ended with `.received.adoc`.
-If `received` file is correct, you just have to rename it with `approved` to make it the new reference.
+If you estimate that the `received` file describes the expected behavior, you just have to rename it replacing `received` with `approved`.
+The file is now the new reference which ensures the non regression.
 
 === Generate documentation
 
-There is one file created by file.
-To group them into a single file, you can execute `main` in `DocGenerator` class.
-It creates in `src/test/docs` an asciidoc file that includes all reference files.
-This file is converted to an HTML file in ̀`docs` folder.
+There is one file created by test and one file created by test class.
+Both end with `approved.adoc` and start with `\_`.
+Files started by `_` will not be converted to html.
 
-When you execute `mvn package`, this main program is launch after running tests.
+In this example, we generate another file without `_`, so this file will be converted to HTML.
+It contains an `include` directive that include the `approved.adoc` file for the class.
+
+When you execute `mvn package`, the `asciidoctor-maven-plugin`
+will convert all files in `src/test/docs` that not start by `_` to HTML
+and write them in `docs` folder at the root of the project.
 
 === Create a new test
 
@@ -73,24 +59,22 @@ To add a test, you just have to create a test as usual.
 You need to add those line in your class.
 [source, java]
 ----
-DocWriter doc = new DocWriter();
 @RegisterExtension
-ApprovalsExtension extension = new ApprovalsExtension(doc);
+ApprovalsExtension doc = new SimpleApprovalsExtension();
 ----
 
-`DocWriter` is the class used to record everything you want to write in your final document using `write` method.
 
 An `ApprovalsExtension` have to be regsitered.
-At the end of each test method, it checks if content written during test is identically to the reference file.
+It's used to record everything you want to write in your final document using `write` method.
+At the end of each test method, this extension checks if content written during test is the same as that of the reference file.
 
-The first time you run a test, it fails bescause there is no reference file.
-You have to adapt the `received` file to make it correspond to what you want and then,
-rename it with `approved` instead of `received`.
+The first time you run a new test, it fails bescause there is no reference file.
+You have to check the `received` file and updating it to match the expected behavior.
+Then, rename it replacing `received` by `approved` to make it the new reference file.
 
+Test name or `@DisplayName` annotation are used as chapter title in documentation.
 
-Test name or @DisplayName content is used as chapter title in documentation.
-
-The method Javadoc is written just under title in documentation.
+The Javadoc of the method will be added in documentation just under the title.
 
 === Writing a test
 

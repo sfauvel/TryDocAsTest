@@ -14,7 +14,6 @@
         <junit.version>5.4.1</junit.version>
         <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
         <documentationtesting.version>1.1.2</documentationtesting.version>
-        <asciidoctorj.version>2.4.0</asciidoctorj.version>
         <asciidoctor.maven.plugin.version>2.1.0</asciidoctor.maven.plugin.version>
     </properties>
     <build>
@@ -68,7 +67,6 @@
             <scope>system</scope>
             <systemPath>${basedir}/lib/documentationtesting-${documentationtesting.version}.jar</systemPath>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -79,12 +77,6 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.asciidoctor</groupId>
-            <artifactId>asciidoctorj</artifactId>
-            <version>${asciidoctorj.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
