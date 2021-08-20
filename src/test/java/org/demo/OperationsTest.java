@@ -3,7 +3,9 @@ package org.demo;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.sfvl.docformatter.AsciidocFormatter;
 import org.sfvl.doctesting.junitextension.ApprovalsExtension;
+import org.sfvl.doctesting.junitextension.FindLambdaMethod;
 import org.sfvl.doctesting.utils.DocPath;
 import org.sfvl.doctesting.utils.DocWriter;
 
@@ -13,17 +15,22 @@ import java.nio.file.Paths;
 
 public class OperationsTest {
 
+    private static final AsciidocFormatter formatter = new AsciidocFormatter();
+
     @RegisterExtension
     static ApprovalsExtension doc = new ApprovalsExtension(new DocWriter());
 
     @AfterAll
     static public void writeFileToConvertToHtml() throws IOException {
+
         final DocPath docPath = new DocPath(OperationsTest.class);
+        final DocPath docPathToInclude = new DocPath(FindLambdaMethod.getMethod(OperationsTest::calculate_the_square_of_a_number));
 
         String content = String.join("\n",
                 doc.getDocWriter().defineDocPath(Paths.get(".")),
-                ":nofooter:",
-                "include::" + docPath.approved().fullname() + "[]");
+                formatter.title(1, "Operations"),
+                formatter.include(docPathToInclude.approved().fullname(), 1)
+        );
 
         try (FileWriter fileWriter = new FileWriter(docPath.page().path().toFile())) {
             fileWriter.write(content);

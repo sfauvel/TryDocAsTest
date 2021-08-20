@@ -13,12 +13,13 @@ Nevertheless, you can download the link:https://github.com/sfauvel/documentation
 
 == Quick start
 
-After cloning the project, execute `prepare-package` goal to run all tests.
+After cloning the project, execute `package` goal to run all tests.
 ----
-mvn prepare-package
+mvn package
 ----
 
-If all goes well, tests are executed and documentation was generated in `docs` folder.
+If all goes well, tests are executed and an HTML documentation was generated in `docs` folder
+with the date of the generation in the footer.
 
 == How to
 
@@ -46,7 +47,7 @@ Both end with `approved.adoc` and start with `\_`.
 Files started by `_` will not be converted to html.
 
 In this example, we generate another file without `_`, so this file will be converted to HTML.
-It contains an `include` directive that include the `approved.adoc` file for the class.
+It contains an `include` directive that include the `approved.adoc` file for the method.
 
 When you execute `mvn package`, the `asciidoctor-maven-plugin`
 will convert all files in `src/test/docs` that not start by `_` to HTML
