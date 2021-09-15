@@ -1,6 +1,4 @@
-ifndef::ROOT_PATH[]
-:ROOT_PATH: ../..
-endif::[]
+ifndef::ROOT_PATH[:ROOT_PATH: ../..]
 
 [#org_demo_OperationsTest_calculate_the_square_of_a_number]
 = Calculate the square of a number
