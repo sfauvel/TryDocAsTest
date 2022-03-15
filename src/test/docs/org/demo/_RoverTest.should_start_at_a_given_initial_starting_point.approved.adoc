@@ -1,0 +1,6 @@
+ifndef::ROOT_PATH[:ROOT_PATH: ../..]
+
+[#org_demo_rovertest_should_start_at_a_given_initial_starting_point]
+= Should start at a given initial starting point
+
+When initialized rover with 3, 2 then position is 3, 2 direction is N

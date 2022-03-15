@@ -1,0 +1,13 @@
+ifndef::ROOT_PATH[:ROOT_PATH: ../..]
+
+[#org_demo_rovertest]
+= Rover test
+
+[#org_demo_rovertest_initialization]
+== Initialization
+
+include::_RoverTest.Initialization.should_start_at_initial_position.approved.adoc[leveloffset=+2]
+
+include::_RoverTest.Initialization.should_start_at_a_given_initial_starting_point.approved.adoc[leveloffset=+2]
+
+include::_RoverTest.should_turn_right.approved.adoc[leveloffset=+1]

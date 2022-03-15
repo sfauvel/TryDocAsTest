@@ -1,0 +1,8 @@
+ifndef::ROOT_PATH[:ROOT_PATH: ../..]
+
+[#org_demo_rovertest_should_turn_right]
+= Should turn right
+
+Initial position is 0, 0 direction is N
+
+After turning right 4 times, direction is E then S then W then N
