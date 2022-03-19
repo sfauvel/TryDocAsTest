@@ -2,15 +2,17 @@ package org.demo;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.sfvl.doctesting.junitextension.ApprovalsExtension;
+import org.sfvl.doctesting.junitextension.HtmlPageExtension;
 import org.sfvl.doctesting.junitextension.SimpleApprovalsExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-
+@ExtendWith(HtmlPageExtension.class)
 public class RoverTest {
 
     @RegisterExtension
