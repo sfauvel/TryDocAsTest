@@ -7,15 +7,60 @@ on:
   workflow_dispatch:
 
 env:
-  root_branch: 'develop'
+  root_branch: 'master'
   doc_branch: 'pages'
   docs_generated: 'target/docs'
   docs_published: 'docs'
   release_pattern: 'documentationtesting-*'
 
 jobs:
+  check_prerequisites:
+    name: Check the prerequisites
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{env.root_branch}}
+
+      - name: check branch
+        id: check_branch
+        run: |
+          NB_DOC_BRANCH=`git branch -r | grep "^\s*origin/${{env.doc_branch}}" | wc -l`
+          echo "The branch ${{env.doc_branch}} must exist"
+          echo "Nb branch ${{env.doc_branch}}: $NB_DOC_BRANCH"
+          echo "::set-output name=NB_DOC_BRANCH::$NB_DOC_BRANCH"
+
+    outputs:
+      NB_DOC_BRANCH: ${{steps.check_branch.outputs.NB_DOC_BRANCH}}
+
+  create_doc_branch:
+    name: Create branch for documentation
+    needs: check_prerequisites
+    if: needs.check_prerequisites.outputs.NB_DOC_BRANCH == 0
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{env.root_branch}}
+
+     - name: Configure Git user
+       run: |
+         git config user.email "actions@noreply.github.com"
+         git config user.name "GitHub Actions"
+
+      - name: Create the branch
+        run: |
+          git checkout -b ${{env.doc_branch}}
+          git push -f
+
   merge_from_root_branch:
     name: Merge from root branch
+    needs: create_doc_branch
+    if: always()
     runs-on: ubuntu-latest
 
     steps:
