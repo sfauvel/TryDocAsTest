@@ -98,7 +98,9 @@ jobs:
         uses: kamiazya/setup-graphviz@v1
 
       - name: Package with Maven
-        run: mvn -B package
+        run: |
+          mvn -B package
+          ls ${{docs_generated}}
 
   public_doc:
     name: Publish doc
