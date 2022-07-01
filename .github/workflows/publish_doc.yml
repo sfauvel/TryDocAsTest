@@ -55,7 +55,7 @@ jobs:
       - name: Create the branch
         run: |
           git checkout -b ${{env.doc_branch}}
-          git push -f
+          git push --set-upstream origin ${{env.doc_branch}}
 
   merge_from_root_branch:
     name: Merge from root branch
