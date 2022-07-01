@@ -82,6 +82,7 @@ jobs:
   generate_doc:
     name: Generate doc
     needs: merge_from_root_branch
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -102,6 +103,7 @@ jobs:
   public_doc:
     name: Publish doc
     needs: generate_doc
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Copy docs
@@ -114,7 +116,7 @@ jobs:
         run: |
           git add ${{env.docs_published}}
           echo "::set-output name=DOC_DIFF::$(git diff --cached  | wc -l)"
-      #
+
       - name: Configure Git user
         if: steps.git_diff.outputs.DOC_DIFF > 0
         run: |
