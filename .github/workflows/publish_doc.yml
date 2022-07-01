@@ -57,6 +57,7 @@ jobs:
   public_doc:
     name: Publish doc
     needs: generate_doc
+    runs-on: ubuntu-latest
     steps:
       - name: Copy docs
         run: |
