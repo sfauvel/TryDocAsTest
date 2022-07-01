@@ -47,10 +47,10 @@ jobs:
           fetch-depth: 0
           ref: ${{env.root_branch}}
 
-     - name: Configure Git user
-       run: |
-         git config user.email "actions@noreply.github.com"
-         git config user.name "GitHub Actions"
+      - name: Configure Git user
+        run: |
+          git config user.email "actions@noreply.github.com"
+          git config user.name "GitHub Actions"
 
       - name: Create the branch
         run: |
