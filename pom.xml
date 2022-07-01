@@ -40,7 +40,7 @@
                 <version>${asciidoctor.maven.plugin.version}</version>
                 <configuration>
                     <sourceDirectory>src/test/docs</sourceDirectory>
-                    <outputDirectory>docs</outputDirectory>
+                    <outputDirectory>target/docs</outputDirectory>
                     <preserveDirectories>true</preserveDirectories>
                     <relativeBaseDir>true</relativeBaseDir>
                     <backend>html</backend>
