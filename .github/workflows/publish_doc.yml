@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  root_branch: 'master'
+  root_branch: 'publish_doc'
   doc_branch: 'pages'
   docs_generated: 'target/docs'
   docs_published: 'docs'
