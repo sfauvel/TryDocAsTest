@@ -111,6 +111,10 @@ jobs:
       - name: Copy docs
         run: |
           rm -Rf ${{env.docs_published}}
+          echo "Files:"
+          ls
+          echo "Files target:"
+          ls target
           cp -R ${{env.docs_generated}} ${{env.docs_published}}
 
       - name: Retrieve diff
