@@ -100,7 +100,7 @@ jobs:
       - name: Package with Maven
         run: |
           mvn -B package
-          ls ${{docs_generated}}
+          ls ${{env.docs_generated}}
 
   public_doc:
     name: Publish doc
