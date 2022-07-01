@@ -102,12 +102,6 @@ jobs:
           mvn -B package
           ls ${{env.docs_generated}}
 
-  public_doc:
-    name: Publish doc
-    needs: generate_doc
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
       - name: Copy docs
         run: |
           rm -Rf ${{env.docs_published}}
