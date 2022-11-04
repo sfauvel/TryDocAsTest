@@ -1,8 +1,8 @@
-package org.demo;
+package org.demo
 
-public class Operations {
-
-    public static int square(int a) {
-        return a * a;
+object Operations {
+    @JvmStatic
+    fun square(a: Int): Int {
+        return a * a
     }
 }

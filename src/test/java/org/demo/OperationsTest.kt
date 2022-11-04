@@ -1,29 +1,31 @@
-package org.demo;
+package org.demo
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.extension.RegisterExtension;
-import org.sfvl.doctesting.junitextension.ApprovalsExtension;
-import org.sfvl.doctesting.junitextension.HtmlPageExtension;
-import org.sfvl.doctesting.junitextension.SimpleApprovalsExtension;
+import org.demo.Operations.square
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.api.extension.RegisterExtension
+import org.sfvl.docformatter.Formatter
+import org.sfvl.doctesting.junitextension.ApprovalsExtension
+import org.sfvl.doctesting.junitextension.HtmlPageExtension
 
-@ExtendWith(HtmlPageExtension.class)
+@ExtendWith(HtmlPageExtension::class)
 @DisplayName("Operations")
-public class OperationsTest {
-
-    @RegisterExtension
-    static ApprovalsExtension doc = new SimpleApprovalsExtension();
-
-    /**
-     * In mathematics, a square is the result of multiplying a number by itself.
-     */
+class OperationsTest {
     @Test
-    public void calculate_the_square_of_a_number() {
-        int a = 5;
-        int result = Operations.square(a);
-        doc.write(String.format("The square of %d is equal to %d", a, result));
+    fun calculate_the_square_of_a_number() {
+        val a = 5
+        val result = square(a)
+
+        doc.write(
+            "In mathematics, a square is the result of multiplying a number by itself.",
+            "",
+            String.format("The square of %d is equal to %d", a, result)
+        )
     }
 
+    companion object {
+        @RegisterExtension
+        var doc: ApprovalsExtension<*, *> = ApprovalsExtension(KTDocWriter<Formatter>())
+    }
 }
-
