@@ -1,0 +1,29 @@
+apply plugin: 'java'
+
+group = 'org.sfvl'
+version = '1.0-SNAPSHOT'
+
+description = """"""
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+repositories {
+    flatDir {
+        dirs 'lib'
+    }
+    mavenCentral()
+}
+dependencies {
+    testImplementation group: 'com.approvaltests', name: 'approvaltests', version:'14.0.0'
+    testImplementation group: 'com.github.javaparser', name: 'javaparser-core', version:'3.24.0'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version:'5.8.2'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version:'5.8.2'
+    testImplementation group: 'org.sfvl', name: 'documentationtesting', version:'1.1.20'
+}
+
+
+test {
+    useJUnitPlatform()
+}

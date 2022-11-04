@@ -10,4 +10,8 @@
 # Maven
 /target
 
+# Gradle
+/.gradle/
+/build/
+
 /tmp
