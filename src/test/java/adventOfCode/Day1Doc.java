@@ -1,6 +1,7 @@
 package adventOfCode;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.sfvl.doctesting.junitextension.SimpleApprovalsExtension;
@@ -27,8 +28,8 @@ public class Day1Doc {
         );
     }
 
-    @Test
-    public void global_example() {
+    @Nested
+    public class Example {
         String input = String.join("\n",
                 "1000",
                 "2000",
@@ -44,35 +45,49 @@ public class Day1Doc {
                 "9000",
                 "",
                 "10000");
-
         final CalorieCounting calorieCounting = new CalorieCounting(input);
-        doc.write("For example, suppose the Elves finish writing their items' Calories and end up with the following list:",
-                "",
-                "----",
-                input,
-                "----",
-                "",
-                "This list represents the Calories of the food carried by *" + calorieCounting.nbElves() + "* Elves:",
-                "",
-                ""
-        );
 
-        doc.write(IntStream.rangeClosed(1, 5)
-                        .mapToObj(elfNumber -> formatElfResult(
-                                Integer.toString(elfNumber),
-                                calorieCounting.getInputFor(elfNumber),
-                                calorieCounting.getCaloriesFor(elfNumber)))
-                .collect(Collectors.joining("\n\n")),
-                "",
-                "");
+        @NoTitle
+        @Test
+        public void show_input() {
+            doc.write("For example, suppose the Elves finish writing their items' Calories and end up with the following list:",
+                    "",
+                    "----",
+                    input,
+                    "----",
+                    "",
+                    "This list represents the Calories of the food carried by *" + calorieCounting.nbElves() + "* Elves:",
+                    "",
+                    ""
+            );
+        }
 
-        final int mostCaloriesForOneElf = calorieCounting.getMostCaloriesForOneElf();
-        final int elfWithMostCalories = calorieCounting.getElfWithMostCalories();
-        doc.write("In case the Elves get hungry and need extra snacks,",
-                "they need to know which Elf to ask:",
-                "they'd like to know how many Calories are being carried",
-                "by the Elf carrying the most Calories.",
-                "In the example above, this is *" + mostCaloriesForOneElf + "* (carried by the Elf number *" + elfWithMostCalories + "*).");
+        @NoTitle
+        @Test
+        public void show_elves_details() {
+
+            doc.write(IntStream.rangeClosed(1, 5)
+                            .mapToObj(elfNumber -> formatElfResult(
+                                    Integer.toString(elfNumber),
+                                    calorieCounting.getInputFor(elfNumber),
+                                    calorieCounting.getCaloriesFor(elfNumber)))
+                            .collect(Collectors.joining("\n\n")),
+                    "",
+                    "");
+        }
+
+        @NoTitle
+        @Test
+        public void show_most_calories() {
+            final int mostCaloriesForOneElf = calorieCounting.getMostCaloriesForOneElf();
+            final int elfWithMostCalories = calorieCounting.getElfWithMostCalories();
+            doc.write("In case the Elves get hungry and need extra snacks,",
+                    "they need to know which Elf to ask:",
+                    "they'd like to know how many Calories are being carried",
+                    "by the Elf carrying the most Calories.",
+                    "In the example above, this is *" + mostCaloriesForOneElf + "* (carried by the Elf number *" + elfWithMostCalories + "*).");
+
+        }
 
     }
 
