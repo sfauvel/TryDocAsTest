@@ -63,9 +63,17 @@ public class Day1Doc {
                                 Integer.toString(elfNumber),
                                 calorieCounting.getInputFor(elfNumber),
                                 calorieCounting.getCaloriesFor(elfNumber)))
-                .collect(Collectors.joining("\n\n")));
+                .collect(Collectors.joining("\n\n")),
+                "",
+                "");
 
-//            In case the Elves get hungry and need extra snacks, they need to know which Elf to ask: they'd like to know how many Calories are being carried by the Elf carrying the most Calories. In the example above, this is 24000 (carried by the fourth Elf).
+        final String mostCaloriesForOneElf = "24000";
+        final String elfWithMostCalories = "4";
+        doc.write("In case the Elves get hungry and need extra snacks, " +
+                "they need to know which Elf to ask: they'd like to know " +
+                "how many Calories are being carried by the Elf carrying " +
+                "the most Calories. " +
+                "In the example above, this is " + mostCaloriesForOneElf + " (carried by the Elf number " + elfWithMostCalories + ").");
 //
 //    Find the Elf carrying the most Calories. How many total Calories is that Elf carrying?
 //
