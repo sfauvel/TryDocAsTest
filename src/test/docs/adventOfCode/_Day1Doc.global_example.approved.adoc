@@ -22,20 +22,20 @@ For example, suppose the Elves finish writing their items' Calories and end up w
 10000
 ----
 
-This list represents the Calories of the food carried by 5 Elves:
+This list represents the Calories of the food carried by *5* Elves:
 
-The Elf number 1 is carrying food with 1000, 2000 and 3000 Calories, a total of 6000 Calories.
+The Elf number *1* is carrying food with *1000, 2000 and 3000* Calories, a total of *6000* Calories.
 
-The Elf number 2 is carrying one food item with 4000 Calories.
+The Elf number *2* is carrying one food item with *4000* Calories.
 
-The Elf number 3 is carrying food with 5000 and 6000 Calories, a total of 11000 Calories.
+The Elf number *3* is carrying food with *5000 and 6000* Calories, a total of *11000* Calories.
 
-The Elf number 4 is carrying food with 7000, 8000 and 9000 Calories, a total of 24000 Calories.
+The Elf number *4* is carrying food with *7000, 8000 and 9000* Calories, a total of *24000* Calories.
 
-The Elf number 5 is carrying one food item with 10000 Calories.
+The Elf number *5* is carrying one food item with *10000* Calories.
 
 In case the Elves get hungry and need extra snacks,
 they need to know which Elf to ask:
 they'd like to know how many Calories are being carried
 by the Elf carrying the most Calories.
-In the example above, this is 24000 (carried by the Elf number 4).
+In the example above, this is *24000* (carried by the Elf number *4*).

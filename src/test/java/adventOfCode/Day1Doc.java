@@ -53,7 +53,7 @@ public class Day1Doc {
                 input,
                 "----",
                 "",
-                "This list represents the Calories of the food carried by " + calorieCounting.nbElves() + " Elves:",
+                "This list represents the Calories of the food carried by *" + calorieCounting.nbElves() + "* Elves:",
                 "",
                 ""
         );
@@ -73,22 +73,22 @@ public class Day1Doc {
                 "they need to know which Elf to ask:",
                 "they'd like to know how many Calories are being carried",
                 "by the Elf carrying the most Calories.",
-                "In the example above, this is " + mostCaloriesForOneElf + " (carried by the Elf number " + elfWithMostCalories + ").");
+                "In the example above, this is *" + mostCaloriesForOneElf + "* (carried by the Elf number *" + elfWithMostCalories + "*).");
 
     }
 
     private String formatElfResult(String elfNumber, List<String> input_calories, String total) {
         if (input_calories.isEmpty()) {
-            return "The Elf number " + elfNumber + " is not carrying food.";
+            return "The Elf number *" + elfNumber + "* is not carrying food.";
         } else if (input_calories.size() == 1) {
             if (input_calories.get(0).equals(total)) {
-                return "The Elf number " + elfNumber + " is carrying one food item with " + input_calories.get(0) + " Calories.";
+                return "The Elf number *" + elfNumber + "* is carrying one food item with *" + input_calories.get(0) + "* Calories.";
             } else {
-                return "The Elf number " + elfNumber + " is carrying one food item with " + input_calories + " Calories, a total of " + total + " Calories.";
+                return "The Elf number *" + elfNumber + "* is carrying one food item with *" + input_calories + "* Calories, a total of *" + total + "* Calories.";
             }
         } else {
             String formatted_input_calories = format_input_calories(input_calories);
-            return "The Elf number " + elfNumber + " is carrying food with " + formatted_input_calories + " Calories, a total of " + total + " Calories.";
+            return "The Elf number *" + elfNumber + "* is carrying food with *" + formatted_input_calories + "* Calories, a total of *" + total + "* Calories.";
         }
     }
 
