@@ -1,13 +1,13 @@
 package adventOfCode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CalorieCounting {
     private final long nbElves;
 
     private final List<List<String>> elvesInput = new ArrayList<>();
+
     public CalorieCounting(String input) {
         final String[] lines = input.split("\n");
 
@@ -30,10 +30,13 @@ public class CalorieCounting {
     }
 
     public String getCaloriesFor(int elfNumber) {
-        return "";
+        return Integer.toString(
+                getInputFor(elfNumber).stream()
+                        .mapToInt(Integer::parseInt)
+                        .sum());
     }
 
     public List<String> getInputFor(int elfNumber) {
-        return elvesInput.get(elfNumber-1);
+        return elvesInput.get(elfNumber - 1);
     }
 }
