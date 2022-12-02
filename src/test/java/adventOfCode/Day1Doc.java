@@ -6,6 +6,10 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import org.sfvl.doctesting.junitextension.SimpleApprovalsExtension;
 import org.sfvl.doctesting.utils.NoTitle;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @DisplayName(value = "Day 1: Calorie Counting")
 public class Day1Doc {
     @RegisterExtension
@@ -54,15 +58,15 @@ public class Day1Doc {
         );
 
         doc.write(
-                formatElfResult("1", "1000, 2000, and 3000", "6000"),
+                formatElfResult("1", Arrays.asList("1000", "2000", "3000"), "6000"),
                 "",
-                formatElfResult("2", "4000"),
+                formatElfResult("2", Arrays.asList("4000"), "4000"),
                 "",
-                formatElfResult("3", "5000 and 6000", "11000"),
+                formatElfResult("3", Arrays.asList("5000", "6000"), "11000"),
                 "",
-                formatElfResult("4", "7000, 8000, and 9000", "24000"),
+                formatElfResult("4", Arrays.asList("7000", "8000", "9000"), "24000"),
                 "",
-                formatElfResult("5", "10000"));
+                formatElfResult("5", Arrays.asList("10000"), "10000"));
 //    The first Elf is carrying food with 1000, 2000, and 3000 Calories, a total of 6000 Calories.
 //    The second Elf is carrying one food item with 4000 Calories.
 //    The third Elf is carrying food with 5000 and 6000 Calories, a total of 11000 Calories.
@@ -75,14 +79,30 @@ public class Day1Doc {
 //
     }
 
-    private String formatElfResult(String elfNumber, String input_calories) {
-        return "The Elf number " + elfNumber + " is carrying one food item with " + input_calories + " Calories.";
+    private String formatElfResult(String elfNumber, List<String> input_calories, String total) {
+        if (input_calories.isEmpty()) {
+            return "The Elf number " + elfNumber + " is not carrying food.";
+        } else if (input_calories.size() == 1) {
+            if (input_calories.get(0).equals(total)) {
+                return "The Elf number " + elfNumber + " is carrying one food item with " + input_calories.get(0) + " Calories.";
+            } else {
+                return "The Elf number " + elfNumber + " is carrying one food item with " + input_calories + " Calories, a total of " + total + " Calories.";
+            }
+        } else {
+            String formatted_input_calories = format_input_calories(input_calories);
+            return "The Elf number " + elfNumber + " is carrying food with " + formatted_input_calories + " Calories, a total of " + total + " Calories.";
+        }
     }
 
-    private String formatElfResult(String elfNumber, String input_calories, String total) {
-        return "The Elf number " + elfNumber + " is carrying food with " + input_calories + " Calories, a total of " + total + " Calories.";
-    }
+    private String format_input_calories(List<String> input_calories) {
+        final int lastIndex = input_calories.size() - 1;
+        return input_calories.stream()
+                .limit(lastIndex)
+                .collect(Collectors.joining(", "))
+                + " and "
+                + input_calories.get(lastIndex);
 
+    }
 }
 
 
