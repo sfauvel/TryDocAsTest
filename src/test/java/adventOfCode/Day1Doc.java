@@ -58,7 +58,7 @@ public class Day1Doc {
         );
 
         doc.write(
-                formatElfResult("1", Arrays.asList("1000", "2000", "3000"), "6000"),
+                formatElfResult("1", calorieCounting.getInputFor(1), "6000"/*calorieCounting.getCaloriesFor(1)*/),
                 "",
                 formatElfResult("2", Arrays.asList("4000"), "4000"),
                 "",
