@@ -9,6 +9,7 @@ import org.sfvl.doctesting.utils.NoTitle;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @DisplayName(value = "Day 1: Calorie Counting")
 public class Day1Doc {
@@ -57,16 +58,12 @@ public class Day1Doc {
                 ""
         );
 
-        doc.write(
-                formatElfResult("1", calorieCounting.getInputFor(1), calorieCounting.getCaloriesFor(1)),
-                "",
-                formatElfResult("2", calorieCounting.getInputFor(2), calorieCounting.getCaloriesFor(2)),
-                "",
-                formatElfResult("3", calorieCounting.getInputFor(3), calorieCounting.getCaloriesFor(3)),
-                "",
-                formatElfResult("4", calorieCounting.getInputFor(4), calorieCounting.getCaloriesFor(4)),
-                "",
-                formatElfResult("5", calorieCounting.getInputFor(5), calorieCounting.getCaloriesFor(5)));
+        doc.write(IntStream.rangeClosed(1, 5)
+                        .mapToObj(elfNumber -> formatElfResult(
+                                Integer.toString(elfNumber),
+                                calorieCounting.getInputFor(elfNumber),
+                                calorieCounting.getCaloriesFor(elfNumber)))
+                .collect(Collectors.joining("\n\n")));
 
 //            In case the Elves get hungry and need extra snacks, they need to know which Elf to ask: they'd like to know how many Calories are being carried by the Elf carrying the most Calories. In the example above, this is 24000 (carried by the fourth Elf).
 //
