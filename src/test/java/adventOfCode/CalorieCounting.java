@@ -2,7 +2,6 @@ package adventOfCode;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class CalorieCounting {
@@ -57,4 +56,14 @@ public class CalorieCounting {
         return collect.indexOf(max) + 1;
     }
 
+    public int getMostCaloriesForOneElf() {
+        final List<Integer> collect = elvesInput.stream()
+                .map(this::getCaloriesFor)
+                .collect(Collectors.toList());
+        final int max = collect.stream()
+                .mapToInt(Integer::intValue)
+                .max()
+                .getAsInt();
+        return max;
+    }
 }
