@@ -1,0 +1,1 @@
+include::_Day1Test.approved.adoc[]

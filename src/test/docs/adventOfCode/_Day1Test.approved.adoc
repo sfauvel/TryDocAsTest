@@ -1,0 +1,15 @@
+ifndef::ROOT_PATH[:ROOT_PATH: ..]
+
+[#adventofcode_day1test]
+= Day 1: Calorie Counting
+
+include::_Day1Test.description.approved.adoc[leveloffset=+1]
+
+[#adventofcode_day1test_example]
+== Example
+
+include::_Day1Test.Example.show_input.approved.adoc[leveloffset=+2]
+
+include::_Day1Test.Example.show_elves_details.approved.adoc[leveloffset=+2]
+
+include::_Day1Test.Example.show_most_calories.approved.adoc[leveloffset=+2]
