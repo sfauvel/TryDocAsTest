@@ -30,14 +30,13 @@ public class CalorieCounting {
             return total;
         }
     }
-    private final long nbElves;
 
-    private final List<List<String>> elvesInput = new ArrayList<>();
     private final List<Elf> elves;
 
     public CalorieCounting(String input) {
         final String[] lines = input.split("\n");
 
+        final List<List<String>> elvesInput = new ArrayList<>();
         List<String> currentInput = new ArrayList<>();
         elvesInput.add(currentInput);
 
@@ -54,11 +53,10 @@ public class CalorieCounting {
         elves = elvesInput.stream()
                 .map(Elf::new)
                 .collect(Collectors.toList());
-        nbElves = elvesInput.size();
     }
 
     public long nbElves() {
-        return nbElves;
+        return elves.size();
     }
 
     public String getCaloriesFor(int elfNumber) {
