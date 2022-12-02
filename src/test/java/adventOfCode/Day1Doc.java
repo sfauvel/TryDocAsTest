@@ -60,13 +60,13 @@ public class Day1Doc {
         doc.write(
                 formatElfResult("1", calorieCounting.getInputFor(1), "6000"/*calorieCounting.getCaloriesFor(1)*/),
                 "",
-                formatElfResult("2", Arrays.asList("4000"), "4000"),
+                formatElfResult("2", calorieCounting.getInputFor(2), "4000"),
                 "",
-                formatElfResult("3", Arrays.asList("5000", "6000"), "11000"),
+                formatElfResult("3", calorieCounting.getInputFor(3), "11000"),
                 "",
-                formatElfResult("4", Arrays.asList("7000", "8000", "9000"), "24000"),
+                formatElfResult("4", calorieCounting.getInputFor(4), "24000"),
                 "",
-                formatElfResult("5", Arrays.asList("10000"), "10000"));
+                formatElfResult("5", calorieCounting.getInputFor(5), "10000"));
 //    The first Elf is carrying food with 1000, 2000, and 3000 Calories, a total of 6000 Calories.
 //    The second Elf is carrying one food item with 4000 Calories.
 //    The third Elf is carrying food with 5000 and 6000 Calories, a total of 11000 Calories.
