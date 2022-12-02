@@ -15,6 +15,12 @@ public class CalorieCounting {
         public List<String> getInput() {
             return input;
         }
+
+        public int getCalories() {
+            return input.stream()
+                    .mapToInt(Integer::parseInt)
+                    .sum();
+        }
     }
     private final long nbElves;
 
@@ -24,7 +30,6 @@ public class CalorieCounting {
     public CalorieCounting(String input) {
         final String[] lines = input.split("\n");
 
-        int currentElf = 1;
         List<String> currentInput = new ArrayList<>();
         elvesInput.add(currentInput);
 
@@ -49,8 +54,7 @@ public class CalorieCounting {
     }
 
     public String getCaloriesFor(int elfNumber) {
-        return Integer.toString(
-                getCaloriesFor(getInputFor(elfNumber)));
+        return Integer.toString(getElf(elfNumber).getCalories());
     }
 
     private int getCaloriesFor(List<String> input) {
@@ -60,7 +64,11 @@ public class CalorieCounting {
     }
 
     public List<String> getInputFor(int elfNumber) {
-        return elves.get(elfNumber -1).getInput();
+        return getElf(elfNumber).getInput();
+    }
+
+    private Elf getElf(int elfNumber) {
+        return elves.get(elfNumber -1);
     }
 
     public int getElfWithMostCalories() {
