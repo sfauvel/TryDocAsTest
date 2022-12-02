@@ -2,14 +2,24 @@ package adventOfCode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class CalorieCounting {
     private static class Elf {
-        final List<String> input;
+        private final List<String> input;
+        private final int total;
 
         private Elf(List<String> input) {
             this.input = input;
+            this.total = getTotal(input);
+        }
+
+        private static int getTotal(List<String> input) {
+            return input.stream()
+                    .mapToInt(Integer::parseInt)
+                    .sum();
         }
 
         public List<String> getInput() {
@@ -17,9 +27,7 @@ public class CalorieCounting {
         }
 
         public int getCalories() {
-            return input.stream()
-                    .mapToInt(Integer::parseInt)
-                    .sum();
+            return total;
         }
     }
     private final long nbElves;
@@ -62,28 +70,30 @@ public class CalorieCounting {
     }
 
     private Elf getElf(int elfNumber) {
-        return elves.get(elfNumber -1);
+        return elves.get(elfNumber - 1);
+    }
+
+    private int etElfNumber(Elf elf) {
+        return elves.indexOf(elf) + 1;
     }
 
     public int getElfWithMostCalories() {
-        final List<Integer> collect = elves.stream()
-                .map(Elf::getCalories)
-                .collect(Collectors.toList());
-        final int max = collect.stream()
-                .mapToInt(Integer::intValue)
-                .max()
-                .getAsInt();
-        return collect.indexOf(max) + 1;
+        final int max = getMostCaloriesForOneElf();
+        final Elf elfWithMostCalories = getCaloriesByElf().keySet().stream()
+                .filter(elf -> elf.getCalories() == max)
+                .findFirst()
+                .get();
+        return etElfNumber(elfWithMostCalories);
     }
 
     public int getMostCaloriesForOneElf() {
-        final List<Integer> collect = elves.stream()
-                .map(Elf::getCalories)
-                .collect(Collectors.toList());
-        final int max = collect.stream()
+        return getCaloriesByElf().values().stream()
                 .mapToInt(Integer::intValue)
                 .max()
                 .getAsInt();
-        return max;
+    }
+
+    private Map<Elf, Integer> getCaloriesByElf() {
+        return elves.stream().collect(Collectors.toMap(Function.identity(), Elf::getCalories));
     }
 }
