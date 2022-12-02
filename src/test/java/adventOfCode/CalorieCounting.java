@@ -1,9 +1,11 @@
 package adventOfCode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class CalorieCounting {
@@ -36,23 +38,23 @@ public class CalorieCounting {
     public CalorieCounting(String input) {
         final String[] lines = input.split("\n");
 
-        final List<List<String>> elvesInput = new ArrayList<>();
-        List<String> currentInput = new ArrayList<>();
-        elvesInput.add(currentInput);
-
-        for (String line : lines) {
-            if (line.isEmpty()) {
-                currentInput = new ArrayList<>();
-                elvesInput.add(currentInput);
-
-            } else {
-                currentInput.add(line);
-            }
-        }
-
-        elves = elvesInput.stream()
+        elves = splitBy(lines, String::isEmpty).stream()
                 .map(Elf::new)
                 .collect(Collectors.toList());
+    }
+
+    private static List<List<String>> splitBy(String[] lines, Predicate<String> splitOnLineMatches) {
+        final List<List<String>> splittedLines = new ArrayList<>();
+
+        splittedLines.add(new ArrayList<String>());
+        for (String line : lines) {
+            if (splitOnLineMatches.test(line)) {
+                splittedLines.add(new ArrayList<String>());
+            } else {
+                splittedLines.get(splittedLines.size()-1).add(line);
+            }
+        }
+        return splittedLines;
     }
 
     public long nbElves() {
