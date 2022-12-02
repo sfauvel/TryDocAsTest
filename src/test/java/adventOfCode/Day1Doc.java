@@ -68,7 +68,7 @@ public class Day1Doc {
                 "");
 
         final String mostCaloriesForOneElf = "24000";
-        final String elfWithMostCalories = "4";
+        final int elfWithMostCalories = calorieCounting.getElfWithMostCalories();
         doc.write("In case the Elves get hungry and need extra snacks, " +
                 "they need to know which Elf to ask: they'd like to know " +
                 "how many Calories are being carried by the Elf carrying " +
