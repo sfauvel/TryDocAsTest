@@ -5,9 +5,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CalorieCounting {
+    private static class Elf {
+        final List<String> input;
+
+        private Elf(List<String> input) {
+            this.input = input;
+        }
+
+        public List<String> getInput() {
+            return input;
+        }
+    }
     private final long nbElves;
 
     private final List<List<String>> elvesInput = new ArrayList<>();
+    private final List<Elf> elves;
 
     public CalorieCounting(String input) {
         final String[] lines = input.split("\n");
@@ -15,14 +27,20 @@ public class CalorieCounting {
         int currentElf = 1;
         List<String> currentInput = new ArrayList<>();
         elvesInput.add(currentInput);
+
         for (String line : lines) {
             if (line.isEmpty()) {
                 currentInput = new ArrayList<>();
                 elvesInput.add(currentInput);
+
             } else {
                 currentInput.add(line);
             }
         }
+
+        elves = elvesInput.stream()
+                .map(Elf::new)
+                .collect(Collectors.toList());
         nbElves = elvesInput.size();
     }
 
@@ -42,7 +60,7 @@ public class CalorieCounting {
     }
 
     public List<String> getInputFor(int elfNumber) {
-        return elvesInput.get(elfNumber - 1);
+        return elves.get(elfNumber -1).getInput();
     }
 
     public int getElfWithMostCalories() {
