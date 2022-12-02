@@ -18,6 +18,8 @@ public class CalorieCounting {
             if (line.isEmpty()) {
                 currentInput = new ArrayList<>();
                 elvesInput.add(currentInput);
+            } else {
+                currentInput.add(line);
             }
         }
         nbElves = elvesInput.size();
@@ -32,6 +34,6 @@ public class CalorieCounting {
     }
 
     public List<String> getInputFor(int elfNumber) {
-        return elvesInput.get(elfNumber);
+        return elvesInput.get(elfNumber-1);
     }
 }

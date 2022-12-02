@@ -30,7 +30,6 @@ public class Day1Doc {
     @Test
     public void global_example() {
         String input = String.join("\n",
-                "----",
                 "1000",
                 "2000",
                 "3000",
@@ -44,13 +43,14 @@ public class Day1Doc {
                 "8000",
                 "9000",
                 "",
-                "10000",
-                "----");
+                "10000");
 
         final CalorieCounting calorieCounting = new CalorieCounting(input);
         doc.write("For example, suppose the Elves finish writing their items' Calories and end up with the following list:",
                 "",
+                "----",
                 input,
+                "----",
                 "",
                 "This list represents the Calories of the food carried by " + calorieCounting.nbElves() + " Elves:",
                 "",
