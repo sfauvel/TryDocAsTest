@@ -45,13 +45,24 @@ public class Day1Doc {
 
         final CalorieCounting calorieCounting = new CalorieCounting(input);
         doc.write("For example, suppose the Elves finish writing their items' Calories and end up with the following list:",
-            "",
-            input,
-            "",
-            "This list represents the Calories of the food carried by " + calorieCounting.nbElves() + " Elves:"
-    );
-//    This list represents the Calories of the food carried by five Elves:
-//
+                "",
+                input,
+                "",
+                "This list represents the Calories of the food carried by " + calorieCounting.nbElves() + " Elves:",
+                "",
+                ""
+        );
+
+        doc.write(
+                formatElfResult("1", "1000, 2000, and 3000", "6000"),
+                "",
+                formatElfResult("2", "4000"),
+                "",
+                formatElfResult("3", "5000 and 6000", "11000"),
+                "",
+                formatElfResult("4", "7000, 8000, and 9000", "24000"),
+                "",
+                formatElfResult("5", "10000"));
 //    The first Elf is carrying food with 1000, 2000, and 3000 Calories, a total of 6000 Calories.
 //    The second Elf is carrying one food item with 4000 Calories.
 //    The third Elf is carrying food with 5000 and 6000 Calories, a total of 11000 Calories.
@@ -62,6 +73,14 @@ public class Day1Doc {
 //
 //    Find the Elf carrying the most Calories. How many total Calories is that Elf carrying?
 //
+    }
+
+    private String formatElfResult(String elfNumber, String input_calories) {
+        return "The Elf number " + elfNumber + " is carrying one food item with " + input_calories + " Calories.";
+    }
+
+    private String formatElfResult(String elfNumber, String input_calories, String total) {
+        return "The Elf number " + elfNumber + " is carrying food with " + input_calories + " Calories, a total of " + total + " Calories.";
     }
 
 }
