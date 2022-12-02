@@ -57,12 +57,6 @@ public class CalorieCounting {
         return Integer.toString(getElf(elfNumber).getCalories());
     }
 
-    private int getCaloriesFor(List<String> input) {
-        return input.stream()
-                .mapToInt(Integer::parseInt)
-                .sum();
-    }
-
     public List<String> getInputFor(int elfNumber) {
         return getElf(elfNumber).getInput();
     }
@@ -72,8 +66,8 @@ public class CalorieCounting {
     }
 
     public int getElfWithMostCalories() {
-        final List<Integer> collect = elvesInput.stream()
-                .map(this::getCaloriesFor)
+        final List<Integer> collect = elves.stream()
+                .map(Elf::getCalories)
                 .collect(Collectors.toList());
         final int max = collect.stream()
                 .mapToInt(Integer::intValue)
@@ -83,8 +77,8 @@ public class CalorieCounting {
     }
 
     public int getMostCaloriesForOneElf() {
-        final List<Integer> collect = elvesInput.stream()
-                .map(this::getCaloriesFor)
+        final List<Integer> collect = elves.stream()
+                .map(Elf::getCalories)
                 .collect(Collectors.toList());
         final int max = collect.stream()
                 .mapToInt(Integer::intValue)
