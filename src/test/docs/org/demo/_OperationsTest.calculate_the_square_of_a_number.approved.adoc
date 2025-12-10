@@ -6,3 +6,4 @@ ifndef::ROOT_PATH[:ROOT_PATH: ../..]
 In mathematics, a square is the result of multiplying a number by itself.
 
 The square of 5 is equal to 25
+
